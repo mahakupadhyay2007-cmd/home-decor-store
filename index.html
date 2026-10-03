@@ -1,0 +1,985 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CasaNest | Home Decor Store</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #faf7f2;
+            color: #333;
+            transition: 0.3s;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        header {
+            background: #fff;
+            padding: 18px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #8b5e3c;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            margin: 0 15px;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            color: #b2764c;
+        }
+
+        .icons button {
+            border: none;
+            background: none;
+            font-size: 20px;
+            cursor: pointer;
+            margin-left: 12px;
+        }
+
+        /* ================= HERO ================= */
+
+        .hero {
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            padding: 60px 8%;
+            background:
+                linear-gradient(rgba(60,40,25,0.35), rgba(60,40,25,0.35)),
+                url("https://images.unsplash.com/photo-1600210492486-724fe5c67fb0")
+                center/cover;
+        }
+
+        .hero-content {
+            color: white;
+            max-width: 600px;
+        }
+
+        .hero h1 {
+            font-size: 58px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #b2764c;
+            color: white;
+            padding: 14px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .btn:hover {
+            background: #8b5e3c;
+        }
+
+        /* ================= SECTION ================= */
+
+        section {
+            padding: 70px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h2 {
+            font-size: 35px;
+            color: #6f4932;
+        }
+
+        .section-title p {
+            margin-top: 10px;
+            color: #777;
+        }
+
+        /* ================= CATEGORIES ================= */
+
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+        }
+
+        .category {
+            background: white;
+            border-radius: 18px;
+            padding: 30px 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: 0.3s;
+        }
+
+        .category:hover {
+            transform: translateY(-8px);
+        }
+
+        .category span {
+            font-size: 45px;
+        }
+
+        .category h3 {
+            margin-top: 15px;
+        }
+
+        /* ================= PRODUCTS ================= */
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 25px;
+        }
+
+        .product {
+            background: white;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            position: relative;
+            transition: 0.3s;
+        }
+
+        .product:hover {
+            transform: translateY(-7px);
+        }
+
+        .product img {
+            width: 100%;
+            height: 230px;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-info h3 {
+            margin-bottom: 8px;
+        }
+
+        .price {
+            color: #a8663e;
+            font-size: 20px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .wishlist {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        /* ================= UNIQUE MOOD SECTION ================= */
+
+        .moods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .mood {
+            padding: 35px;
+            border-radius: 20px;
+            text-align: center;
+            cursor: pointer;
+            color: white;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .mood1 {
+            background: #9c6644;
+        }
+
+        .mood2 {
+            background: #6b705c;
+        }
+
+        .mood3 {
+            background: #a98467;
+        }
+
+        .mood4 {
+            background: #7f5539;
+        }
+
+        /* ================= OFFER ================= */
+
+        .offer {
+            background: #ead7c5;
+            border-radius: 25px;
+            text-align: center;
+            padding: 50px;
+        }
+
+        .offer h2 {
+            font-size: 38px;
+            color: #6f4932;
+        }
+
+        .offer p {
+            margin: 15px 0 25px;
+            font-size: 18px;
+        }
+
+        /* ================= REVIEWS ================= */
+
+        .reviews {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .review {
+            background: white;
+            padding: 25px;
+            border-radius: 18px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.07);
+        }
+
+        .stars {
+            color: #e3a008;
+            margin-bottom: 12px;
+        }
+
+        /* ================= DECOR IDEA ================= */
+
+        .idea {
+            background: #3f3128;
+            color: white;
+            border-radius: 25px;
+            padding: 50px;
+            text-align: center;
+        }
+
+        .idea h2 {
+            font-size: 35px;
+            margin-bottom: 15px;
+        }
+
+        #ideaText {
+            font-size: 20px;
+            margin: 20px;
+        }
+
+        /* ================= NEWSLETTER ================= */
+
+        .newsletter {
+            text-align: center;
+        }
+
+        .newsletter input {
+            padding: 15px;
+            width: 280px;
+            border: 1px solid #ccc;
+            border-radius: 25px;
+            margin-right: 10px;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #30251f;
+            color: white;
+            padding: 45px 8%;
+            text-align: center;
+        }
+
+        footer h2 {
+            margin-bottom: 15px;
+        }
+
+        footer p {
+            color: #ddd;
+            margin: 8px;
+        }
+
+        /* ================= DARK MODE ================= */
+
+        body.dark {
+            background: #181614;
+            color: #eee;
+        }
+
+        body.dark header,
+        body.dark .category,
+        body.dark .product,
+        body.dark .review {
+            background: #292522;
+            color: white;
+        }
+
+        body.dark nav a {
+            color: white;
+        }
+
+        body.dark .section-title h2 {
+            color: #e2b995;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media(max-width: 768px) {
+
+            nav {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .newsletter input {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header>
+
+        <div class="logo">
+            CasaNest
+        </div>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#categories">Categories</a>
+            <a href="#products">Products</a>
+            <a href="#moods">Shop by Mood</a>
+            <a href="#reviews">Reviews</a>
+        </nav>
+
+        <div class="icons">
+
+            <button onclick="toggleDarkMode()">
+                🌙
+            </button>
+
+            <button onclick="showCart()">
+                🛒 <span id="cartCount">0</span>
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================= HERO ================= -->
+
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <h1>
+                Make Your Space Beautiful
+            </h1>
+
+            <p>
+                Discover elegant and unique home décor pieces
+                designed to make your house feel like home.
+            </p>
+
+            <a href="#products" class="btn">
+                Explore Collection
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= CATEGORIES ================= -->
+
+    <section id="categories">
+
+        <div class="section-title">
+
+            <h2>Explore Categories</h2>
+
+            <p>
+                Find everything you need to decorate your dream home.
+            </p>
+
+        </div>
+
+
+        <div class="categories">
+
+            <div class="category">
+                <span>🛋️</span>
+                <h3>Furniture</h3>
+            </div>
+
+            <div class="category">
+                <span>💡</span>
+                <h3>Lighting</h3>
+            </div>
+
+            <div class="category">
+                <span>🪴</span>
+                <h3>Plants</h3>
+            </div>
+
+            <div class="category">
+                <span>🖼️</span>
+                <h3>Wall Art</h3>
+            </div>
+
+            <div class="category">
+                <span>🕯️</span>
+                <h3>Candles</h3>
+            </div>
+
+            <div class="category">
+                <span>🪞</span>
+                <h3>Mirrors</h3>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= PRODUCTS ================= -->
+
+    <section id="products">
+
+        <div class="section-title">
+
+            <h2>Featured Collection</h2>
+
+            <p>Hand-picked pieces for your beautiful home.</p>
+
+        </div>
+
+
+        <div class="products">
+
+            <!-- PRODUCT 1 -->
+
+            <div class="product">
+
+                <button class="wishlist"
+                    onclick="addWishlist(this)">
+                    ♡
+                </button>
+
+                <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6">
+
+                <div class="product-info">
+
+                    <h3>Modern Vase</h3>
+
+                    <p>Minimal ceramic decorative vase.</p>
+
+                    <div class="price">₹799</div>
+
+                    <button class="btn"
+                        onclick="addCart()">
+                        Add to Cart
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- PRODUCT 2 -->
+
+            <div class="product">
+
+                <button class="wishlist"
+                    onclick="addWishlist(this)">
+                    ♡
+                </button>
+
+                <img src="https://images.unsplash.com/photo-1604014237800-1c9102c219da">
+
+                <div class="product-info">
+
+                    <h3>Luxury Cushion</h3>
+
+                    <p>Soft and stylish decorative cushion.</p>
+
+                    <div class="price">₹499</div>
+
+                    <button class="btn"
+                        onclick="addCart()">
+                        Add to Cart
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- PRODUCT 3 -->
+
+            <div class="product">
+
+                <button class="wishlist"
+                    onclick="addWishlist(this)">
+                    ♡
+                </button>
+
+                <img src="https://images.unsplash.com/photo-1507473885765-e6ed057f782c">
+
+                <div class="product-info">
+
+                    <h3>Designer Lamp</h3>
+
+                    <p>Warm lighting for cozy evenings.</p>
+
+                    <div class="price">₹1,299</div>
+
+                    <button class="btn"
+                        onclick="addCart()">
+                        Add to Cart
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- PRODUCT 4 -->
+
+            <div class="product">
+
+                <button class="wishlist"
+                    onclick="addWishlist(this)">
+                    ♡
+                </button>
+
+                <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace">
+
+                <div class="product-info">
+
+                    <h3>Wall Decoration</h3>
+
+                    <p>Elegant artwork for modern interiors.</p>
+
+                    <div class="price">₹999</div>
+
+                    <button class="btn"
+                        onclick="addCart()">
+                        Add to Cart
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= UNIQUE FEATURE ================= -->
+
+    <section id="moods">
+
+        <div class="section-title">
+
+            <h2>✨ Shop by Mood</h2>
+
+            <p>
+                Choose the mood you want for your room.
+            </p>
+
+        </div>
+
+
+        <div class="moods">
+
+            <div class="mood mood1"
+                onclick="selectMood('Cozy')">
+                ☕ Cozy
+            </div>
+
+            <div class="mood mood2"
+                onclick="selectMood('Natural')">
+                🌿 Natural
+            </div>
+
+            <div class="mood mood3"
+                onclick="selectMood('Elegant')">
+                ✨ Elegant
+            </div>
+
+            <div class="mood mood4"
+                onclick="selectMood('Luxury')">
+                👑 Luxury
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= OFFER ================= -->
+
+    <section>
+
+        <div class="offer">
+
+            <h2>
+                🏷️ Special Home Makeover Offer
+            </h2>
+
+            <p>
+                Get up to <strong>30% OFF</strong>
+                on selected home décor items.
+            </p>
+
+            <button class="btn"
+                onclick="claimOffer()">
+                Claim Offer
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= DECOR IDEA ================= -->
+
+    <section>
+
+        <div class="idea">
+
+            <h2>
+                💡 Decor Idea of the Day
+            </h2>
+
+            <p id="ideaText">
+                Add indoor plants to create a fresh
+                and relaxing atmosphere.
+            </p>
+
+            <button class="btn"
+                onclick="newIdea()">
+                Get Another Idea
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= REVIEWS ================= -->
+
+    <section id="reviews">
+
+        <div class="section-title">
+
+            <h2>What Our Customers Say</h2>
+
+            <p>
+                Real experiences from our customers.
+            </p>
+
+        </div>
+
+
+        <div class="reviews">
+
+            <div class="review">
+
+                <div class="stars">
+                    ★★★★★
+                </div>
+
+                <p>
+                    "The vase looks beautiful in my living room.
+                    The quality is amazing!"
+                </p>
+
+                <br>
+
+                <strong>— Priya</strong>
+
+            </div>
+
+
+            <div class="review">
+
+                <div class="stars">
+                    ★★★★★
+                </div>
+
+                <p>
+                    "I loved the modern designs.
+                    My room looks completely different."
+                </p>
+
+                <br>
+
+                <strong>— Ananya</strong>
+
+            </div>
+
+
+            <div class="review">
+
+                <div class="stars">
+                    ★★★★☆
+                </div>
+
+                <p>
+                    "Beautiful products and very attractive
+                    packaging."
+                </p>
+
+                <br>
+
+                <strong>— Rahul</strong>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= NEWSLETTER ================= -->
+
+    <section class="newsletter">
+
+        <div class="section-title">
+
+            <h2>Stay Inspired ✨</h2>
+
+            <p>
+                Get new décor ideas and special offers.
+            </p>
+
+        </div>
+
+        <input type="email"
+            id="email"
+            placeholder="Enter your email">
+
+        <button class="btn"
+            onclick="subscribe()">
+            Subscribe
+        </button>
+
+    </section>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <h2>CasaNest</h2>
+
+        <p>
+            Beautiful spaces. Beautiful living.
+        </p>
+
+        <p>
+            © 2026 CasaNest Home Decor. All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+
+        /* CART */
+
+        let cart = 0;
+
+        function addCart() {
+
+            cart++;
+
+            document.getElementById("cartCount").innerText = cart;
+
+            alert("Product added to cart! 🛒");
+
+        }
+
+
+        function showCart() {
+
+            if (cart === 0) {
+
+                alert("Your cart is empty.");
+
+            } else {
+
+                alert("You have " + cart + " item(s) in your cart.");
+
+            }
+
+        }
+
+
+        /* WISHLIST */
+
+        function addWishlist(button) {
+
+            if (button.innerText === "♡") {
+
+                button.innerText = "♥";
+
+                alert("Added to wishlist ❤️");
+
+            } else {
+
+                button.innerText = "♡";
+
+            }
+
+        }
+
+
+        /* DARK MODE */
+
+        function toggleDarkMode() {
+
+            document.body.classList.toggle("dark");
+
+        }
+
+
+        /* SHOP BY MOOD */
+
+        function selectMood(mood) {
+
+            alert(
+                "You selected the " +
+                mood +
+                " mood! ✨"
+            );
+
+        }
+
+
+        /* OFFER */
+
+        function claimOffer() {
+
+            alert(
+                "🎉 Congratulations!\n\n" +
+                "Your 30% OFF offer has been activated!"
+            );
+
+        }
+
+
+        /* DECOR IDEAS */
+
+        const ideas = [
+
+            "Add indoor plants to create a fresh and relaxing atmosphere.",
+
+            "Use warm lighting to make your bedroom more comfortable.",
+
+            "Add a large mirror to make a small room look bigger.",
+
+            "Use cushions with different textures for a stylish sofa.",
+
+            "Add wall art to give your room a personal touch.",
+
+            "Use neutral colors with wooden furniture for a modern look."
+
+        ];
+
+
+        function newIdea() {
+
+            let random =
+                Math.floor(Math.random() * ideas.length);
+
+            document.getElementById("ideaText").innerText =
+                ideas[random];
+
+        }
+
+
+        /* NEWSLETTER */
+
+        function subscribe() {
+
+            let email =
+                document.getElementById("email").value;
+
+            if (email === "") {
+
+                alert("Please enter your email.");
+
+            } else {
+
+                alert(
+                    "Thank you for subscribing! 💌"
+                );
+
+                document.getElementById("email").value = "";
+
+            }
+
+        }
+
+    </script>
+
+</body>
+
+</html>
+```
